@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia Kadu | Corte, Barba & Tradição Premium</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#e6c253',
+                            500: '#d4af37',
+                            600: '#b38f24',
+                            700: '#8c6d15'
+                        },
+                        dark: {
+                            900: '#0d0d0e',
+                            800: '#141417',
+                            700: '#1e1e24',
+                            600: '#2a2a32'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        heading: ['Oswald', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0d0d0e;
+            color: #e2e8f0;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .font-heading {
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.05em;
+        }
+
+        /* Gold Gradient Text */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #fff2be 0%, #d4af37 50%, #997819 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glassmorphism Effect */
+        .glass-card {
+            background: rgba(30, 30, 36, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card-hover:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Gold Glow Button */
+        .btn-gold {
+            background: linear-gradient(135deg, #e6c253 0%, #d4af37 60%, #b38f24 100%);
+            color: #0d0d0e;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+        }
+
+        .btn-gold:hover {
+            box-shadow: 0 6px 22px rgba(212, 175, 55, 0.45);
+            transform: translateY(-2px);
+            filter: brightness(1.08);
+        }
+
+        .btn-outline-gold {
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-gold:hover {
+            background-color: #d4af37;
+            color: #0d0d0e;
+            box-shadow: 0 4px 18px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Barber Pole Stripe Animation Accent */
+        @keyframes barberPole {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 0; }
+        }
+
+        .barber-stripe {
+            background: repeating-linear-gradient(
+                -45deg,
+                #d4af37,
+                #d4af37 10px,
+                #1e1e24 10px,
+                #1e1e24 20px,
+                #e2e8f0 20px,
+                #e2e8f0 30px,
+                #1e1e24 30px,
+                #1e1e24 40px
+            );
+            background-size: 50px 50px;
+            animation: barberPole 3s linear infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d0d0e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a32;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
+
+        /* Step Active Styling */
+        .step-active {
+            border-color: #d4af37 !important;
+            background-color: #d4af37 !important;
+            color: #0d0d0e !important;
+        }
+        
+        .step-completed {
+            border-color: #d4af37 !important;
+            color: #d4af37 !important;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-500 selection:text-black">
+
+    <!-- Navigation Bar -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 bg-dark-900/90 backdrop-blur-md border-b border-dark-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-full border-2 border-gold-500 flex items-center justify-center bg-dark-800 text-gold-500 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-scissors text-lg"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading text-2xl font-bold tracking-wider text-white group-hover:text-gold-400 transition-colors">BARBEARIA <span class="text-gold-500">KADU</span></span>
+                    <span class="text-[9px] uppercase tracking-[0.25em] text-gray-400 -mt-1">Corte &amp; Tradição</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Início</a>
+                <a href="#servicos" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Serviços</a>
+                <a href="#sobre" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Sobre</a>
+                <a href="#galeria" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Galeria</a>
+                <a href="#avaliacoes" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Avaliações</a>
+                <a href="#contato" class="text-sm font-medium text-gray-300 hover:text-gold-400 transition-colors">Contato</a>
+            </nav>
+
+            <!-- CTA Button Desktop -->
+            <div class="hidden md:flex items-center">
+                <button onclick="openBookingModal()" class="btn-gold px-5 py-2.5 rounded-full text-sm font-semibold flex items-center space-x-2">
+                    <i class="fa-regular fa-calendar-check text-base"></i>
+                    <span>Agendar Horário</span>
+                </button>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-toggle" class="md:hidden text-gray-300 hover:text-gold-400 focus:outline-none p-2">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-800 border-b border-gold-500/20 px-6 pt-4 pb-6 space-y-4">
+            <a href="#home" onclick="toggleMobileMenu()" class="block text-base font-medium text-gray-200 hover:text-gold-400">Início</a>
+            <a href="#servicos" onclick="toggleMobileMenu()" class="block text-base font-medium text-gray-200 hover:text-gold-400">Serviços</a>
+            <a href="#sobre" onclick="toggleMobileMenu()" class="block text-base font-medium text-gray-200 hover:text-gold-400">Sobre</a>
+            <a href="#galeria" onclick="toggleMobileMenu()" class="block text-base font-medium text-gray-200 hover:text-gold-400">Galeria</a>
+            <a href="#avaliacoes" onclick="toggleMobileMenu()" class="block text-base font-medium text-gray-200 hover:text-gold-400">Avaliações</a>
+            <a href="#contato" onclick="toggleMobileMenu()" class="block text-base font-medium text-gray-200 hover:text-gold-400">Contato</a>
+            <div class="pt-2">
+                <button onclick="toggleMobileMenu(); openBookingModal();" class="w-full btn-gold py-3 rounded-xl text-center font-bold flex items-center justify-center space-x-2">
+                    <i class="fa-regular fa-calendar-check"></i>
+                    <span>Agendar Horário</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay Gradient -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1920&q=80" 
+                 alt="Ambiente Barbearia Kadu" 
+                 class="w-full h-full object-cover object-center opacity-25">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/80 to-dark-900/60"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold-500/10 via-transparent to-transparent"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <!-- Small Badge -->
+            <div class="inline-flex items-center space-x-2 bg-dark-800/90 border border-gold-500/30 px-4 py-1.5 rounded-full mb-6 text-gold-400 text-xs sm:text-sm font-semibold tracking-wide uppercase">
+                <i class="fa-solid fa-crown text-gold-500"></i>
+                <span>Experiência Masculina Premium</span>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="font-heading text-4xl sm:text-6xl md:text-7xl font-bold uppercase tracking-tight text-white mb-6 leading-tight">
+                Corte, Barba e Tradição<br class="hidden sm:inline">
+                <span class="text-gold-gradient">com Estilo Moderno</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="max-w-2xl mx-auto text-gray-300 text-base sm:text-lg mb-10 leading-relaxed font-light">
+                A experiência de cuidados masculinos de excelência que você merece. Atendimento personalizado, ambiente descontraído e profissionais mestres do estilo.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
+                <button onclick="openBookingModal()" class="w-full sm:w-auto btn-gold px-8 py-4 rounded-xl text-base font-bold flex items-center justify-center space-x-3">
+                    <i class="fa-solid fa-calendar-plus text-lg"></i>
+                    <span>Agendar Agora</span>
+                </button>
+                <a href="#servicos" class="w-full sm:w-auto btn-outline-gold px-8 py-4 rounded-xl text-base font-bold flex items-center justify-center space-x-3">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Nossos Serviços</span>
+                </a>
+            </div>
+
+            <!-- Feature Highlights Badges -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                <div class="glass-card p-4 rounded-2xl flex items-center space-x-4 text-left border border-dark-600">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-user-shield text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm">Atendimento Exclusivo</h4>
+                        <p class="text-xs text-gray-400">Horário reservado com atenção individual</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-4 rounded-2xl flex items-center space-x-4 text-left border border-dark-600">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-award text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm">Profissionais Experts</h4>
+                        <p class="text-xs text-gray-400">Especialistas em visagismo e tendências</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-4 rounded-2xl flex items-center space-x-4 text-left border border-dark-600">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-beer-mug-empty text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm">Cerveja Gelada Cortesia</h4>
+                        <p class="text-xs text-gray-400">Sua bebida favorita por nossa conta</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="py-24 bg-dark-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <p class="text-gold-500 font-semibold uppercase text-xs sm:text-sm tracking-widest mb-2">Tabela de Serviços</p>
+                <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white uppercase">Cortes, Barba &amp; Tratamentos</h2>
+                <div class="w-20 h-1 bg-gold-500 mx-auto my-4 rounded-full"></div>
+                <p class="text-gray-400 text-sm sm:text-base">Selecione o serviço ideal para o seu estilo. Todos os nossos atendimentos acompanham higienização, finalização premium e bebida cortesia.</p>
+            </div>
+
+            <!-- Service Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service Card 1 -->
+                <div class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-gold-500/5 rounded-bl-full pointer-events-none transition-all group-hover:bg-gold-500/10"></div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-dark-700 border border-gold-500/20 text-gold-400 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-scissors"></i>
+                            </div>
+                            <span class="text-2xl font-bold text-gold-400 font-heading">R$ 45</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-white mb-2">Corte de Cabelo</h3>
+                        <p class="text-gray-400 text-sm mb-4">Corte personalizado com análise visagista, lavagem relaxante com produtos premium e finalização com pomada ou spray profissional.</p>
+                    </div>
+                    <div class="pt-4 border-t border-dark-700 flex items-center justify-between">
+                        <span class="text-xs text-gray-500 flex items-center">
+                            <i class="fa-regular fa-clock mr-1 text-gold-500"></i> 40 min
+                        </span>
+                        <button onclick="preSelectServiceAndOpen('corte')" class="text-xs font-bold uppercase tracking-wider text-gold-400 hover:text-gold-300 flex items-center space-x-1">
+                            <span>Selecionar</span>
+                            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-gold-500/5 rounded-bl-full pointer-events-none transition-all group-hover:bg-gold-500/10"></div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-dark-700 border border-gold-500/20 text-gold-400 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-user-ninja"></i>
+                            </div>
+                            <span class="text-2xl font-bold text-gold-400 font-heading">R$ 35</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-white mb-2">Barba Terapia</h3>
+                        <p class="text-gray-400 text-sm mb-4">Rituais clássicos com toalha quente, óleos hidratantes, alinhamento preciso na lâmina e massagem facial relaxante.</p>
+                    </div>
+                    <div class="pt-4 border-t border-dark-700 flex items-center justify-between">
+                        <span class="text-xs text-gray-500 flex items-center">
+                            <i class="fa-regular fa-clock mr-1 text-gold-500"></i> 35 min
+                        </span>
+                        <button onclick="preSelectServiceAndOpen('barba')" class="text-xs font-bold uppercase tracking-wider text-gold-400 hover:text-gold-300 flex items-center space-x-1">
+                            <span>Selecionar</span>
+                            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 (Popular Choice Badge) -->
+                <div class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group border-2 border-gold-500/40">
+                    <div class="absolute top-3 right-3 bg-gold-500 text-dark-900 font-bold text-[10px] uppercase px-2.5 py-1 rounded-full tracking-wider">
+                        Mais Pedido
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-gold-500/20 border border-gold-500/50 text-gold-400 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-crown"></i>
+                            </div>
+                            <span class="text-2xl font-bold text-gold-400 font-heading">R$ 70</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-white mb-2">Combo Cabelo + Barba</h3>
+                        <p class="text-gray-400 text-sm mb-4">A experiência completa de renovação de visual. Inclui o corte de cabelo completo e a barba terapia tradicional com desconto especial.</p>
+                    </div>
+                    <div class="pt-4 border-t border-dark-700 flex items-center justify-between">
+                        <span class="text-xs text-gray-500 flex items-center">
+                            <i class="fa-regular fa-clock mr-1 text-gold-500"></i> 1h 10min
+                        </span>
+                        <button onclick="preSelectServiceAndOpen('combo')" class="text-xs font-bold uppercase tracking-wider text-gold-400 hover:text-gold-300 flex items-center space-x-1">
+                            <span>Selecionar</span>
+                            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-dark-700 border border-gold-500/20 text-gold-400 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-spray-can"></i>
+                            </div>
+                            <span class="text-2xl font-bold text-gold-400 font-heading">R$ 40</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-white mb-2">Pigmentação Barba/Cabelo</h3>
+                        <p class="text-gray-400 text-sm mb-4">Preenchimento de falhas e realce dos contornos com tintura aerógrafa antialérgica de altíssima durabilidade e aspecto natural.</p>
+                    </div>
+                    <div class="pt-4 border-t border-dark-700 flex items-center justify-between">
+                        <span class="text-xs text-gray-500 flex items-center">
+                            <i class="fa-regular fa-clock mr-1 text-gold-500"></i> 30 min
+                        </span>
+                        <button onclick="preSelectServiceAndOpen('pigmentacao')" class="text-xs font-bold uppercase tracking-wider text-gold-400 hover:text-gold-300 flex items-center space-x-1">
+                            <span>Selecionar</span>
+                            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-dark-700 border border-gold-500/20 text-gold-400 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            </div>
+                            <span class="text-2xl font-bold text-gold-400 font-heading">R$ 20</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-white mb-2">Acabamento / Pézinho</h3>
+                        <p class="text-gray-400 text-sm mb-4">Manutenção rápida do contorno do cabelo e nuca na lâmina afiada para manter seu visual alinhado entre os cortes completando.</p>
+                    </div>
+                    <div class="pt-4 border-t border-dark-700 flex items-center justify-between">
+                        <span class="text-xs text-gray-500 flex items-center">
+                            <i class="fa-regular fa-clock mr-1 text-gold-500"></i> 20 min
+                        </span>
+                        <button onclick="preSelectServiceAndOpen('pezinho')" class="text-xs font-bold uppercase tracking-wider text-gold-400 hover:text-gold-300 flex items-center space-x-1">
+                            <span>Selecionar</span>
+                            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between relative overflow-hidden group">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-dark-700 border border-gold-500/20 text-gold-400 flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-[#d4af37] fa-champagne-glasses"></i>
+                            </div>
+                            <span class="text-2xl font-bold text-gold-400 font-heading">R$ 250</span>
+                        </div>
+                        <h3 class="font-heading text-xl font-bold text-white mb-2">Dia do Noivo VIP</h3>
+                        <p class="text-gray-400 text-sm mb-4">Atendimento VIP exclusivo em sala privativa: Corte, barba, limpeza de pele, esfoliação, manicure, brinde com whisky ou cervejas artesanais.</p>
+                    </div>
+                    <div class="pt-4 border-t border-dark-700 flex items-center justify-between">
+                        <span class="text-xs text-gray-500 flex items-center">
+                            <i class="fa-regular fa-clock mr-1 text-gold-500"></i> 2h 30min
+                        </span>
+                        <button onclick="preSelectServiceAndOpen('noivo')" class="text-xs font-bold uppercase tracking-wider text-gold-400 hover:text-gold-300 flex items-center space-x-1">
+                            <span>Selecionar</span>
+                            <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-24 bg-dark-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                <!-- Left Column: Visual Collage -->
+                <div class="relative">
+                    <div class="relative z-10 rounded-2xl overflow-hidden border-2 border-gold-500/30 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=800&q=80" 
+                             alt="Barbeiro Kadu trabalhando" 
+                             class="w-full h-[450px] object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <!-- Experience Floating Badge -->
+                    <div class="absolute -bottom-6 -right-6 z-20 bg-dark-800 border-2 border-gold-500 p-6 rounded-2xl shadow-xl hidden sm:block">
+                        <div class="flex items-center space-x-4">
+                            <span class="font-heading text-4xl font-bold text-gold-400">8+</span>
+                            <div class="text-xs font-semibold text-gray-300 leading-tight">
+                                ANOS DE<br><span class="text-gold-500">EXCELÊNCIA</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Decorative element -->
+                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-gold-500/10 rounded-full filter blur-3xl -z-0"></div>
+                </div>
+
+                <!-- Right Column: Story & Philosophy -->
+                <div>
+                    <p class="text-gold-500 font-semibold uppercase text-xs sm:text-sm tracking-widest mb-2">Conheça Nossa História</p>
+                    <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white uppercase mb-6 leading-tight">
+                        Mais do que um corte,<br><span class="text-gold-gradient">Uma Verdadeira Tradição</span>
+                    </h2>
+                    <p class="text-gray-300 text-base leading-relaxed mb-6">
+                        A <strong class="text-white">Barbearia Kadu</strong> nasceu do sonho de resgatar o charme e a elegância das barbearias clássicas dos anos 50, integrando os cortes e estilos mais modernos do visagismo masculino contemporâneo.
+                    </p>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                        Fundada por Kadu, especialista com mais de 8 anos de estrada, o espaço foi idealizado para ser o seu refúgio diário. Um lugar onde você pode relaxar, trocar uma boa conversa, tomar uma cerveja bem gelada e sair com o visual e a autoestima no topo.
+                    </p>
+
+                    <!-- Feature Bullet Points -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-gold-500 text-sm bg-gold-500/10 p-2 rounded-lg"></i>
+                            <span class="text-sm font-medium text-gray-200">Poltronas Vintage Reclináveis</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-gold-500 text-sm bg-gold-500/10 p-2 rounded-lg"></i>
+                            <span class="text-sm font-medium text-gray-200">Cervejaria Artesanal Própria</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-gold-500 text-sm bg-gold-500/10 p-2 rounded-lg"></i>
+                            <span class="text-sm font-medium text-gray-200">Ambiente Climatizado &amp; Wi-Fi</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-gold-500 text-sm bg-gold-500/10 p-2 rounded-lg"></i>
+                            <span class="text-sm font-medium text-gray-200">Estacionamento Gratuito</span>
+                        </div>
+                    </div>
+
+                    <!-- Statistics Counter Bar -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-dark-700 text-center">
+                        <div>
+                            <span class="font-heading text-3xl sm:text-4xl font-bold text-gold-400 block">+5.000</span>
+                            <span class="text-[11px] sm:text-xs text-gray-400 uppercase tracking-wider">Clientes Felizes</span>
+                        </div>
+                        <div>
+                            <span class="font-heading text-3xl sm:text-4xl font-bold text-gold-400 block">4.9★</span>
+                            <span class="text-[11px] sm:text-xs text-gray-400 uppercase tracking-wider">Avaliação Google</span>
+                        </div>
+                        <div>
+                            <span class="font-heading text-3xl sm:text-4xl font-bold text-gold-400 block">100%</span>
+                            <span class="text-[11px] sm:text-xs text-gray-400 uppercase tracking-wider">Satisfação</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Barbers Team Section -->
+    <section class="py-20 bg-dark-800 border-t border-dark-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <p class="text-gold-500 font-semibold uppercase text-xs sm:text-sm tracking-widest mb-2">Nossa Equipe</p>
+                <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white uppercase">Mestres das Tesouras</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Barber 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden text-center group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80" 
+                             alt="Kadu Master Barber" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 relative -mt-8">
+                        <span class="inline-block px-3 py-1 bg-gold-500 text-dark-900 font-bold text-xs uppercase rounded-full mb-2">Founder &amp; Master</span>
+                        <h3 class="font-heading text-2xl font-bold text-white">Kadu Silva</h3>
+                        <p class="text-xs text-gold-400 mb-3">Especialista em Visagismo &amp; Barba Clássica</p>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4">8 anos aperfeiçoando estilos e transformando a autoestima de centenas de homens.</p>
+                        <button onclick="preSelectBarberAndOpen('Kadu')" class="w-full btn-outline-gold py-2 rounded-lg text-xs font-bold uppercase tracking-wider">
+                            Agendar com Kadu
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Barber 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden text-center group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" 
+                             alt="Lucas Specialist Barber" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 relative -mt-8">
+                        <span class="inline-block px-3 py-1 bg-dark-700 text-gold-400 border border-gold-500/30 font-bold text-xs uppercase rounded-full mb-2">Barber Specialist</span>
+                        <h3 class="font-heading text-2xl font-bold text-white">Lucas Rocha</h3>
+                        <p class="text-xs text-gold-400 mb-3">Especialista em Degradê &amp; Freestyle</p>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4">Mestre em linhas modernas, navalha afiada e degradês perfeitos na máquina.</p>
+                        <button onclick="preSelectBarberAndOpen('Lucas')" class="w-full btn-outline-gold py-2 rounded-lg text-xs font-bold uppercase tracking-wider">
+                            Agendar com Lucas
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Barber 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden text-center group">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" 
+                             alt="Mateus Fade Master" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 relative -mt-8">
+                        <span class="inline-block px-3 py-1 bg-dark-700 text-gold-400 border border-gold-500/30 font-bold text-xs uppercase rounded-full mb-2">Fade Master</span>
+                        <h3 class="font-heading text-2xl font-bold text-white">Mateus Santos</h3>
+                        <p class="text-xs text-gold-400 mb-3">Especialista em Barba Terapia &amp; Texturizações</p>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4">Cuidado milimétrico e rituais relaxantes com toalha quente e óleos finos.</p>
+                        <button onclick="preSelectBarberAndOpen('Mateus')" class="w-full btn-outline-gold py-2 rounded-lg text-xs font-bold uppercase tracking-wider">
+                            Agendar com Mateus
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Gallery Section -->
+    <section id="galeria" class="py-24 bg-dark-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <p class="text-gold-500 font-semibold uppercase text-xs sm:text-sm tracking-widest mb-2">Galeria de Trabalhos</p>
+                <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white uppercase">Portfólio de Estilos</h2>
+                <div class="w-20 h-1 bg-gold-500 mx-auto my-4 rounded-full"></div>
+            </div>
+
+            <!-- Filter Category Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12" id="gallery-filters">
+                <button onclick="filterGallery('todos')" class="gallery-btn active bg-gold-500 text-dark-900 font-bold px-5 py-2 rounded-full text-xs sm:text-sm transition-all">Todos</button>
+                <button onclick="filterGallery('fade')" class="gallery-btn bg-dark-800 text-gray-300 hover:text-gold-400 font-medium px-5 py-2 rounded-full text-xs sm:text-sm border border-dark-700 transition-all">Degradê / Fade</button>
+                <button onclick="filterGallery('barba')" class="gallery-btn bg-dark-800 text-gray-300 hover:text-gold-400 font-medium px-5 py-2 rounded-full text-xs sm:text-sm border border-dark-700 transition-all">Barba Terapia</button>
+                <button onclick="filterGallery('classico')" class="gallery-btn bg-dark-800 text-gray-300 hover:text-gold-400 font-medium px-5 py-2 rounded-full text-xs sm:text-sm border border-dark-700 transition-all">Estilo Clássico</button>
+                <button onclick="filterGallery('infantil')" class="gallery-btn bg-dark-800 text-gray-300 hover:text-gold-400 font-medium px-5 py-2 rounded-full text-xs sm:text-sm border border-dark-700 transition-all">Infantil</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                
+                <!-- Item 1: Fade -->
+                <div class="gallery-item fade relative rounded-2xl overflow-hidden glass-card group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1000&q=80', 'Mid Fade com Textura Topo')">
+                    <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=600&q=80" 
+                         alt="Mid Fade" class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase text-gold-400 font-bold tracking-wider mb-1">Degradê / Fade</span>
+                        <h4 class="text-white font-heading text-lg font-bold">Mid Fade com Textura</h4>
+                        <div class="mt-2 flex items-center text-xs text-gray-300">
+                            <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-gold-500"></i> Expandir Imagem
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Barba -->
+                <div class="gallery-item barba relative rounded-2xl overflow-hidden glass-card group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=1000&q=80', 'Barba Modelada na Navalha')">
+                    <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80" 
+                         alt="Barba Modelada" class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase text-gold-400 font-bold tracking-wider mb-1">Barba</span>
+                        <h4 class="text-white font-heading text-lg font-bold">Barba Modelada Alinhada</h4>
+                        <div class="mt-2 flex items-center text-xs text-gray-300">
+                            <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-gold-500"></i> Expandir Imagem
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Classico -->
+                <div class="gallery-item classico relative rounded-2xl overflow-hidden glass-card group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1000&q=80', 'Executive Pompadour Clássico')">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80" 
+                         alt="Corte Clássico" class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase text-gold-400 font-bold tracking-wider mb-1">Estilo Clássico</span>
+                        <h4 class="text-white font-heading text-lg font-bold">Executive Pompadour</h4>
+                        <div class="mt-2 flex items-center text-xs text-gray-300">
+                            <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-gold-500"></i> Expandir Imagem
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: Fade -->
+                <div class="gallery-item fade relative rounded-2xl overflow-hidden glass-card group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1000&q=80', 'High Skin Fade Razor Finish')">
+                    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=600&q=80" 
+                         alt="High Skin Fade" class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase text-gold-400 font-bold tracking-wider mb-1">Degradê / Fade</span>
+                        <h4 class="text-white font-heading text-lg font-bold">High Skin Fade</h4>
+                        <div class="mt-2 flex items-center text-xs text-gray-300">
+                            <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-gold-500"></i> Expandir Imagem
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Barba -->
+                <div class="gallery-item barba relative rounded-2xl overflow-hidden glass-card group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1517832606589-715069675376?auto=format&fit=crop&w=1000&q=80', 'Barba Terapia com Toalha Quente')">
+                    <img src="https://images.unsplash.com/photo-1517832606589-715069675376?auto=format&fit=crop&w=600&q=80" 
+                         alt="Barba Terapia" class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase text-gold-400 font-bold tracking-wider mb-1">Barba</span>
+                        <h4 class="text-white font-heading text-lg font-bold">Barba Terapia Completa</h4>
+                        <div class="mt-2 flex items-center text-xs text-gray-300">
+                            <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-gold-500"></i> Expandir Imagem
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6: Infantil -->
+                <div class="gallery-item infantil relative rounded-2xl overflow-hidden glass-card group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=80', 'Corte Infantil Moderno')">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80" 
+                         alt="Corte Infantil" class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/90 via-dark-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-xs uppercase text-gold-400 font-bold tracking-wider mb-1">Infantil</span>
+                        <h4 class="text-white font-heading text-lg font-bold">Kids Style Estilizado</h4>
+                        <div class="mt-2 flex items-center text-xs text-gray-300">
+                            <i class="fa-solid fa-magnifying-glass-plus mr-1.5 text-gold-500"></i> Expandir Imagem
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="avaliacoes" class="py-24 bg-dark-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <p class="text-gold-500 font-semibold uppercase text-xs sm:text-sm tracking-widest mb-2">Depoimentos</p>
+                <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white uppercase">O Que Dizem Nossos Clientes</h2>
+                <div class="w-20 h-1 bg-gold-500 mx-auto my-4 rounded-full"></div>
+            </div>
+
+            <!-- Review Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Review 1 -->
+                <div class="glass-card p-8 rounded-2xl relative flex flex-col justify-between">
+                    <div class="text-gold-400 mb-4 flex text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6 italic">
+                        "O Kadu é um verdadeiro mestre do visagismo. Ele entendeu exatamente o corte que combinava com o formato do meu rosto. Além disso, a cerveja de cortesia bem gelada faz toda a diferença!"
+                    </p>
+                    <div class="flex items-center space-x-4 pt-4 border-t border-dark-700">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Cliente" class="w-12 h-12 rounded-full object-cover border border-gold-500">
+                        <div>
+                            <h4 class="text-white font-bold text-sm">Ricardo Oliveira</h4>
+                            <span class="text-xs text-gray-500">Cliente há 3 anos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="glass-card p-8 rounded-2xl relative flex flex-col justify-between">
+                    <div class="text-gold-400 mb-4 flex text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6 italic">
+                        "A barbeoterapia do Mateus é espetacular! Toalha quente, massagem e um alinhamento impecável da barba. A pontualidade no agendamento online também é impecável."
+                    </p>
+                    <div class="flex items-center space-x-4 pt-4 border-t border-dark-700">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" alt="Cliente" class="w-12 h-12 rounded-full object-cover border border-gold-500">
+                        <div>
+                            <h4 class="text-white font-bold text-sm">Fernando Costa</h4>
+                            <span class="text-xs text-gray-500">Cliente Recorrente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="glass-card p-8 rounded-2xl relative flex flex-col justify-between">
+                    <div class="text-gold-400 mb-4 flex text-sm">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6 italic">
+                        "Fiz o pacote 'Dia do Noivo' com os meus padrinhos antes do casamento. Atendimento de altíssimo nível, ambiente sensacional. Ficamos prontos com estilo e no horário!"
+                    </p>
+                    <div class="flex items-center space-x-4 pt-4 border-t border-dark-700">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Cliente" class="w-12 h-12 rounded-full object-cover border border-gold-500">
+                        <div>
+                            <h4 class="text-white font-bold text-sm">Gabriel Mendes</h4>
+                            <span class="text-xs text-gray-500">Dia do Noivo</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Location Section -->
+    <section id="contato" class="py-24 bg-dark-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+                
+                <!-- Info & Hours -->
+                <div>
+                    <p class="text-gold-500 font-semibold uppercase text-xs sm:text-sm tracking-widest mb-2">Venha nos Visitar</p>
+                    <h2 class="font-heading text-3xl sm:text-5xl font-bold text-white uppercase mb-6">Horários &amp; Contato</h2>
+                    <p class="text-gray-400 text-sm mb-8 leading-relaxed">
+                        Estamos localizados em uma área nobre da cidade, com estacionamento privativo e fácil acesso. Agende seu horário ou passe para tomar uma cerveja e renovar o visual.
+                    </p>
+
+                    <!-- Contact Details list -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start space-x-4 p-3 rounded-xl bg-dark-800/80 border border-dark-700">
+                            <div class="w-10 h-10 rounded-lg bg-gold-500/10 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Endereço</h4>
+                                <p class="text-xs text-gray-400">Av. Principal das Palmeiras, 1050 - Centro Elegante</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 p-3 rounded-xl bg-dark-800/80 border border-dark-700">
+                            <div class="w-10 h-10 rounded-lg bg-gold-500/10 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">WhatsApp / Telefone </h4>
+                                <p class="text-xs text-gray-400"> (48) 98879-1030 / (48) 98879-1030 </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 p-3 rounded-xl bg-dark-800/80 border border-dark-700">
+                            <div class="w-10 h-10 rounded-lg bg-gold-500/10 text-gold-400 flex items-center justify-center shrink-0">
+                                <i class="fa-brands fa-instagram text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Instagram</h4>
+                                <p class="text-xs text-gray-400">@barbeariakadu</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hours Table -->
+                    <div class="glass-card p-6 rounded-2xl border border-dark-700">
+                        <h4 class="font-heading text-lg font-bold text-white mb-4 flex items-center">
+                            <i class="fa-regular fa-clock text-gold-500 mr-2"></i> Horário de Funcionamento
+                        </h4>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <div class="flex justify-between py-1 border-b border-dark-700 text-gray-300">
+                                <span>Terça a Sexta</span>
+                                <span class="font-semibold text-gold-400">09:00 - 20:00</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-dark-700 text-gray-300">
+                                <span>Sábado</span>
+                                <span class="font-semibold text-gold-400">08:00 - 19:00</span>
+                            </div>
+                            <div class="flex justify-between py-1 text-gray-400">
+                                <span>Domingo e Segunda</span>
+                                <span class="text-red-400">Fechado</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Styled Interactive Map Preview Card -->
+                <div class="flex flex-col justify-between">
+                    <div class="glass-card rounded-2xl overflow-hidden h-full min-h-[380px] border border-dark-700 relative flex flex-col justify-end p-6 group">
+                        
+                        <!-- Map Visual Overlay simulation -->
+                        <div class="absolute inset-0 bg-dark-800">
+                            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Mapa da Região" 
+                                 class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/40 to-transparent"></div>
+                        </div>
+
+                        <!-- Map Pin Badge Center -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10">
+                            <div class="w-14 h-14 rounded-full bg-gold-500 text-dark-900 flex items-center justify-center mx-auto shadow-2xl animate-bounce">
+                                <i class="fa-solid fa-location-dot text-2xl"></i>
+                            </div>
+                            <div class="mt-2 bg-dark-900/90 text-white text-xs px-3 py-1.5 rounded-full border border-gold-500/40 font-bold backdrop-blur-sm shadow-md">
+                                Barbearia Kadu
+                            </div>
+                        </div>
+
+                        <!-- Card Bottom Info -->
+                        <div class="relative z-10 bg-dark-900/90 backdrop-blur-md p-6 rounded-xl border border-dark-700">
+                            <h4 class="font-heading text-lg font-bold text-white mb-2">Fácil Acesso no Centro</h4>
+                            <p class="text-xs text-gray-400 mb-4">Próximo à praça principal com manobrista no local.</p>
+                            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="w-full btn-gold py-3 rounded-xl text-xs uppercase font-bold flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                                <span>Como Chegar no Google Maps</span>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5511998876655?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20Barbearia%20Kadu." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="fixed bottom-6 right-6 z-30 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 group">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <span class="absolute right-16 bg-dark-800 text-white text-xs font-semibold py-1.5 px-3 rounded-lg border border-emerald-500/30 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+            Fale Conosco via WhatsApp
+        </span>
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 border-t border-dark-700 py-12 text-center sm:text-left">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                
+                <!-- Col 1 -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3 justify-center sm:justify-start">
+                        <div class="w-8 h-8 rounded-full border border-gold-500 flex items-center justify-center bg-dark-800 text-gold-500">
+                            <i class="fa-solid fa-scissors text-sm"></i>
+                        </div>
+                        <span class="font-heading text-xl font-bold tracking-wider text-white">BARBEARIA <span class="text-gold-500">KADU</span></span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Referência em cortes modernos, barba tradicional e tratamento exclusivo para o homem moderno.
+                    </p>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-heading text-sm font-bold text-white uppercase mb-4 tracking-wider">Navegação</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="#home" class="hover:text-gold-400 transition-colors">Início</a></li>
+                        <li><a href="#servicos" class="hover:text-gold-400 transition-colors">Serviços e Preços</a></li>
+                        <li><a href="#sobre" class="hover:text-gold-400 transition-colors">Nossa História</a></li>
+                        <li><a href="#galeria" class="hover:text-gold-400 transition-colors">Galeria de Fotos</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-heading text-sm font-bold text-white uppercase mb-4 tracking-wider">Atendimento</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li>Terça a Sexta: 09h - 20h</li>
+                        <li>Sábado: 08h - 19h</li>
+                        <li>Atendimento com Agendamento</li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="font-heading text-sm font-bold text-white uppercase mb-4 tracking-wider">Redes Sociais</h4>
+                    <div class="flex justify-center sm:justify-start space-x-3">
+                        <a href="#" class="w-9 h-9 rounded-full bg-dark-800 border border-dark-700 text-gray-300 hover:text-gold-400 hover:border-gold-500 flex items-center justify-center transition-all">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-dark-800 border border-dark-700 text-gray-300 hover:text-gold-400 hover:border-gold-500 flex items-center justify-center transition-all">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-dark-800 border border-dark-700 text-gray-300 hover:text-gold-400 hover:border-gold-500 flex items-center justify-center transition-all">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-dark-800 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+                <p>&copy; 2026 Barbearia Kadu. Todos os direitos reservados.</p>
+                <p class="mt-2 sm:mt-0">Desenvolvido com sofisticação e estilo.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE BOOKING MODAL (AGENDAMENTO ONLINE) -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
+        <div class="bg-dark-800 border border-gold-500/30 rounded-2xl w-full max-w-2xl my-8 overflow-hidden shadow-2xl relative animate-fade-in">
+            
+            <!-- Modal Header -->
+            <div class="p-6 bg-dark-900 border-b border-dark-700 flex items-center justify-between">
+                <div>
+                    <h3 class="font-heading text-2xl font-bold text-white uppercase">Agendamento <span class="text-gold-500">Online</span></h3>
+                    <p class="text-xs text-gray-400">Escolha o serviço, barbeiro e o melhor horário</p>
+                </div>
+                <button onclick="closeBookingModal()" class="w-9 h-9 rounded-full bg-dark-800 text-gray-400 hover:text-white hover:bg-dark-700 flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Step Progress Indicator -->
+            <div class="px-6 py-4 bg-dark-900/50 border-b border-dark-700 flex items-center justify-between text-xs font-semibold">
+                <div class="flex items-center space-x-2">
+                    <span id="step-num-1" class="w-6 h-6 rounded-full border border-gray-600 flex items-center justify-center step-active">1</span>
+                    <span class="text-gray-300 hidden sm:inline">Serviço</span>
+                </div>
+                <div class="w-8 h-0.5 bg-dark-700"></div>
+                <div class="flex items-center space-x-2">
+                    <span id="step-num-2" class="w-6 h-6 rounded-full border border-gray-600 flex items-center justify-center text-gray-500">2</span>
+                    <span class="text-gray-400 hidden sm:inline">Profissional</span>
+                </div>
+                <div class="w-8 h-0.5 bg-dark-700"></div>
+                <div class="flex items-center space-x-2">
+                    <span id="step-num-3" class="w-6 h-6 rounded-full border border-gray-600 flex items-center justify-center text-gray-500">3</span>
+                    <span class="text-gray-400 hidden sm:inline">Data &amp; Hora</span>
+                </div>
+                <div class="w-8 h-0.5 bg-dark-700"></div>
+                <div class="flex items-center space-x-2">
+                    <span id="step-num-4" class="w-6 h-6 rounded-full border border-gray-600 flex items-center justify-center text-gray-500">4</span>
+                    <span class="text-gray-400 hidden sm:inline">Confirmação</span>
+                </div>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="p-6">
+                
+                <!-- STEP 1: SELECT SERVICE -->
+                <div id="step-content-1" class="booking-step">
+                    <h4 class="text-sm font-bold text-gold-400 uppercase tracking-wider mb-4">Passo 1: Escolha os Serviços</h4>
+                    <div class="space-y-3">
+                        
+                        <label class="flex items-center justify-between p-4 rounded-xl bg-dark-900 border border-dark-700 hover:border-gold-500/50 cursor-pointer transition-colors">
+                            <div class="flex items-center space-x-3">
+                                <input type="checkbox" name="service" value="corte" data-price="45" data-name="Corte de Cabelo" onchange="calculateBookingTotal()" class="w-4 h-4 accent-gold-500 rounded">
+                                <div>
+                                    <span class="text-sm font-bold text-white block">Corte de Cabelo</span>
+                                    <span class="text-xs text-gray-400">Lavagem + Visagismo + Pomada</span>
+                                </div>
+                            </div>
+                            <span class="font-heading font-bold text-gold-400">R$ 45,00</span>
+                        </label>
+
+                        <label class="flex items-center justify-between p-4 rounded-xl bg-dark-900 border border-dark-700 hover:border-gold-500/50 cursor-pointer transition-colors">
+                            <div class="flex items-center space-x-3">
+                                <input type="checkbox" name="service" value="barba" data-price="35" data-name="Barba Terapia" onchange="calculateBookingTotal()" class="w-4 h-4 accent-gold-500 rounded">
+                                <div>
+                                    <span class="text-sm font-bold text-white block">Barba Terapia</span>
+                                    <span class="text-xs text-gray-400">Toalha quente + Alinhamento + Óleo</span>
+                                </div>
+                            </div>
+                            <span class="font-heading font-bold text-gold-400">R$ 35,00</span>
+                        </label>
+
+                        <label class="flex items-center justify-between p-4 rounded-xl bg-dark-900 border border-dark-700 hover:border-gold-500/50 cursor-pointer transition-colors">
+                            <div class="flex items-center space-x-3">
+                                <input type="checkbox" name="service" value="combo" data-price="70" data-name="Combo Cabelo + Barba" onchange="calculateBookingTotal()" class="w-4 h-4 accent-gold-500 rounded">
+                                <div>
+                                    <span class="text-sm font-bold text-white block">Combo Cabelo + Barba</span>
+                                    <span class="text-xs text-gray-400">Experiência completa com desconto</span>
+                                </div>
+                            </div>
+                            <span class="font-heading font-bold text-gold-400">R$ 70,00</span>
+                        </label>
+
+                        <label class="flex items-center justify-between p-4 rounded-xl bg-dark-900 border border-dark-700 hover:border-gold-500/50 cursor-pointer transition-colors">
+                            <div class="flex items-center space-x-3">
+                                <input type="checkbox" name="service" value="pigmentacao" data-price="40" data-name="Pigmentação" onchange="calculateBookingTotal()" class="w-4 h-4 accent-gold-500 rounded">
+                                <div>
+                                    <span class="text-sm font-bold text-white block">Pigmentação Barba/Cabelo</span>
+                                    <span class="text-xs text-gray-400">Preenchimento de falhas aerógrafo</span>
+                                </div>
+                            </div>
+                            <span class="font-heading font-bold text-gold-400">R$ 40,00</span>
+                        </label>
+
+                        <label class="flex items-center justify-between p-4 rounded-xl bg-dark-900 border border-dark-700 hover:border-gold-500/50 cursor-pointer transition-colors">
+                            <div class="flex items-center space-x-3">
+                                <input type="checkbox" name="service" value="pezinho" data-price="20" data-name="Acabamento / Pézinho" onchange="calculateBookingTotal()" class="w-4 h-4 accent-gold-500 rounded">
+                                <div>
+                                    <span class="text-sm font-bold text-white block">Acabamento / Pézinho</span>
+                                    <span class="text-xs text-gray-400">Manutenção dos contornos na lâmina</span>
+                                </div>
+                            </div>
+                            <span class="font-heading font-bold text-gold-400">R$ 20,00</span>
+                        </label>
+
+                        <label class="flex items-center justify-between p-4 rounded-xl bg-dark-900 border border-dark-700 hover:border-gold-500/50 cursor-pointer transition-colors">
+                            <div class="flex items-center space-x-3">
+                                <input type="checkbox" name="service" value="noivo" data-price="250" data-name="Dia do Noivo VIP" onchange="calculateBookingTotal()" class="w-4 h-4 accent-gold-500 rounded">
+                                <div>
+                                    <span class="text-sm font-bold text-white block">Dia do Noivo VIP</span>
+                                    <span class="text-xs text-gray-400">Atendimento privativo completo com drinks</span>
+                                </div>
+                            </div>
+                            <span class="font-heading font-bold text-gold-400">R$ 250,00</span>
+                        </label>
+
+                    </div>
+                </div>
+
+                <!-- STEP 2: SELECT BARBER -->
+                <div id="step-content-2" class="booking-step hidden">
+                    <h4 class="text-sm font-bold text-gold-400 uppercase tracking-wider mb-4">Passo 2: Escolha o Profissional</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        
+                        <label class="p-4 rounded-xl bg-dark-900 border border-dark-700 hover:border-gold-500 cursor-pointer flex items-center space-x-3">
+                            <input type="radio" name="barber" value="Qualquer disponível" checked class="accent-gold-500">
+                            <div>
+                                <span class="text-sm font-bold text-white block">Qualquer Profissional</span>
+                                <span class="text-xs text-gray-400">Próximo horário livre</span>
+                            </div>
+                        </label>
+
+                        <label class="p-4 rounded-xl bg-dark-900 border border-dark-700 hover:border-gold-500 cursor-pointer flex items-center space-x-3">
+                            <input type="radio" name="barber" value="Kadu - Master Barber" class="accent-gold-500">
+                            <div>
+                                <span class="text-sm font-bold text-white block">Kadu</span>
+                                <span class="text-xs text-gold-400">Master Barber</span>
+                            </div>
+                        </label>
+
+                        <label class="p-4 rounded-xl bg-dark-900 border border-dark-700 hover:border-gold-500 cursor-pointer flex items-center space-x-3">
+                            <input type="radio" name="barber" value="Lucas - Barber Specialist" class="accent-gold-500">
+                            <div>
+                                <span class="text-sm font-bold text-white block">Lucas</span>
+                                <span class="text-xs text-gold-400">Specialist Fade</span>
+                            </div>
+                        </label>
+
+                        <label class="p-4 rounded-xl bg-dark-900 border border-dark-700 hover:border-gold-500 cursor-pointer flex items-center space-x-3">
+                            <input type="radio" name="barber" value="Mateus - Fade Master" class="accent-gold-500">
+                            <div>
+                                <span class="text-sm font-bold text-white block">Mateus</span>
+                                <span class="text-xs text-gold-400">Barba Terapia</span>
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+
+                <!-- STEP 3: DATE & TIME -->
+                <div id="step-content-3" class="booking-step hidden">
+                    <h4 class="text-sm font-bold text-gold-400 uppercase tracking-wider mb-4">Passo 3: Data e Horário</h4>
+                    
+                    <div class="mb-6">
+                        <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Selecione o Dia:</label>
+                        <input type="date" id="booking-date" class="w-full bg-dark-900 border border-dark-700 text-white rounded-xl p-3 focus:border-gold-500 focus:outline-none text-sm">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Horários Disponíveis:</label>
+                        <div class="grid grid-cols-3 sm:grid-cols-4 gap-2" id="time-slots-container">
+                            <button type="button" onclick="selectTimeSlot(this)" class="time-slot p-2.5 rounded-lg bg-dark-900 border border-dark-700 text-xs text-gray-300 hover:border-gold-500 font-medium">09:00</button>
+                            <button type="button" onclick="selectTimeSlot(this)" class="time-slot p-2.5 rounded-lg bg-dark-900 border border-dark-700 text-xs text-gray-300 hover:border-gold-500 font-medium">10:00</button>
+                            <button type="button" onclick="selectTimeSlot(this)" class="time-slot p-2.5 rounded-lg bg-dark-900 border border-dark-700 text-xs text-gray-300 hover:border-gold-500 font-medium">11:00</button>
+                            <button type="button" onclick="selectTimeSlot(this)" class="time-slot p-2.5 rounded-lg bg-dark-900 border border-dark-700 text-xs text-gray-300 hover:border-gold-500 font-medium">14:00</button>
+                            <button type="button" onclick="selectTimeSlot(this)" class="time-slot p-2.5 rounded-lg bg-dark-900 border border-dark-700 text-xs text-gray-300 hover:border-gold-500 font-medium">15:00</button>
+                            <button type="button" onclick="selectTimeSlot(this)" class="time-slot p-2.5 rounded-lg bg-dark-900 border border-dark-700 text-xs text-gray-300 hover:border-gold-500 font-medium">16:00</button>
+                            <button type="button" onclick="selectTimeSlot(this)" class="time-slot p-2.5 rounded-lg bg-dark-900 border border-dark-700 text-xs text-gray-300 hover:border-gold-500 font-medium">17:00</button>
+                            <button type="button" onclick="selectTimeSlot(this)" class="time-slot p-2.5 rounded-lg bg-dark-900 border border-dark-700 text-xs text-gray-300 hover:border-gold-500 font-medium">18:00</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4: PERSONAL DATA -->
+                <div id="step-content-4" class="booking-step hidden">
+                    <h4 class="text-sm font-bold text-gold-400 uppercase tracking-wider mb-4">Passo 4: Seus Dados para Confirmação</h4>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase mb-1">Nome Completo *</label>
+                            <input type="text" id="client-name" placeholder="Ex: Carlos Silva" class="w-full bg-dark-900 border border-dark-700 text-white rounded-xl p-3 focus:border-gold-500 focus:outline-none text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase mb-1">WhatsApp / Telefone *</label>
+                            <input type="tel" id="client-phone" placeholder="Ex: (11) 99999-8888" class="w-full bg-dark-900 border border-dark-700 text-white rounded-xl p-3 focus:border-gold-500 focus:outline-none text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase mb-1">Observações (Opcional)</label>
+                            <textarea id="client-notes" rows="2" placeholder="Ex: Preferência por corte baixo nos lados..." class="w-full bg-dark-900 border border-dark-700 text-white rounded-xl p-3 focus:border-gold-500 focus:outline-none text-sm"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer Controls -->
+            <div class="p-6 bg-dark-900 border-t border-dark-700 flex items-center justify-between">
+                <div>
+                    <span class="text-xs text-gray-400 uppercase block">Total Estimado</span>
+                    <span id="modal-total-price" class="font-heading text-2xl font-bold text-gold-400">R$ 0,00</span>
+                </div>
+
+                <div class="flex space-x-3">
+                    <button id="btn-prev-step" onclick="changeStep(-1)" class="hidden px-4 py-2.5 rounded-xl border border-dark-700 text-gray-300 hover:bg-dark-800 text-xs font-bold uppercase">
+                        Voltar
+                    </button>
+                    <button id="btn-next-step" onclick="changeStep(1)" class="btn-gold px-6 py-2.5 rounded-xl text-xs font-bold uppercase flex items-center space-x-2">
+                        <span>Avançar</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SUCCESS RECEIPT MODAL -->
+    <div id="receipt-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+        <div class="bg-dark-800 border border-gold-500/40 rounded-2xl w-full max-w-md p-6 text-center relative shadow-2xl">
+            <div class="w-16 h-16 bg-gold-500/20 text-gold-400 border border-gold-500 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-white uppercase mb-2">Agendamento Pré-Confirmado!</h3>
+            <p class="text-xs text-gray-300 mb-6">Enviamos os detalhes para o seu WhatsApp para validação instantânea com a nossa recepção.</p>
+
+            <div class="bg-dark-900 rounded-xl p-4 text-left border border-dark-700 space-y-2 text-xs mb-6" id="receipt-summary">
+                <!-- Generated Summary goes here -->
+            </div>
+
+            <div class="space-y-3">
+                <a id="whatsapp-redirect-btn" href="#" target="_blank" class="w-full btn-gold py-3 rounded-xl font-bold text-xs uppercase flex items-center justify-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Confirmar via WhatsApp</span>
+                </a>
+                <button onclick="closeReceiptModal()" class="w-full bg-dark-700 hover:bg-dark-600 text-gray-300 py-2.5 rounded-xl text-xs font-bold uppercase">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX MODAL FOR GALLERY -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/90 backdrop-blur-md" onclick="closeLightbox()">
+        <div class="relative max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl border border-gold-500/30 bg-dark-900" onclick="event.stopPropagation()">
+            <button onclick="closeLightbox()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 text-white hover:text-gold-400 flex items-center justify-center">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <img id="lightbox-img" src="" alt="Ampliada" class="max-h-[80vh] w-auto mx-auto object-contain">
+            <div class="p-4 bg-dark-900 text-center border-t border-dark-700">
+                <h4 id="lightbox-caption" class="font-heading text-lg font-bold text-gold-400 uppercase"></h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Notification Toast -->
+    <div id="toast-message" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-dark-800 border border-gold-500 text-white px-6 py-3 rounded-xl shadow-2xl text-xs font-bold uppercase hidden flex items-center space-x-2">
+        <i class="fa-solid fa-circle-info text-gold-400"></i>
+        <span id="toast-text">Notificação</span>
+    </div>
+
+    <!-- JavaScript Interactive Logic -->
+    <script>
+        // Global Booking State Variables
+        let currentStep = 1;
+        let selectedTime = '';
+        let selectedServices = [];
+        let totalPrice = 0;
+
+        // Today's Date default setup
+        window.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('booking-date');
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            let mm = today.getMonth() + 1;
+            let dd = today.getDate();
+            if (mm < 10) mm = '0' + mm;
+            if (dd < 10) dd = '0' + dd;
+            dateInput.min = `${yyyy}-${mm}-${dd}`;
+            dateInput.value = `${yyyy}-${mm}-${dd}`;
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.getElementById('menu-toggle').addEventListener('click', toggleMobileMenu);
+
+        // Booking Modal Controls
+        function openBookingModal() {
+            document.getElementById('booking-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            updateStepView();
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Quick Select Service from pricing section
+        function preSelectServiceAndOpen(serviceVal) {
+            openBookingModal();
+            const checkboxes = document.querySelectorAll('input[name="service"]');
+            checkboxes.forEach(cb => {
+                cb.checked = (cb.value === serviceVal);
+            });
+            calculateBookingTotal();
+        }
+
+        // Quick Select Barber from barbers section
+        function preSelectBarberAndOpen(barberName) {
+            openBookingModal();
+            const radios = document.querySelectorAll('input[name="barber"]');
+            radios.forEach(r => {
+                if(r.value.includes(barberName)) {
+                    r.checked = true;
+                }
+            });
+            // Jump directly to step 1 first for service selection
+            currentStep = 1;
+            updateStepView();
+        }
+
+        // Calculate Total Price
+        function calculateBookingTotal() {
+            const checkboxes = document.querySelectorAll('input[name="service"]:checked');
+            totalPrice = 0;
+            selectedServices = [];
+            
+            checkboxes.forEach(cb => {
+                totalPrice += parseFloat(cb.getAttribute('data-price'));
+                selectedServices.push(cb.getAttribute('data-name'));
+            });
+
+            document.getElementById('modal-total-price').innerText = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+        }
+
+        // Time slot selection
+        function selectTimeSlot(btn) {
+            document.querySelectorAll('.time-slot').forEach(b => {
+                b.classList.remove('bg-gold-500', 'text-dark-900', 'border-gold-500');
+                b.classList.add('bg-dark-900', 'text-gray-300', 'border-dark-700');
+            });
+            btn.classList.remove('bg-dark-900', 'text-gray-300', 'border-dark-700');
+            btn.classList.add('bg-gold-500', 'text-dark-900', 'border-gold-500');
+            selectedTime = btn.innerText.trim();
+        }
+
+        // Multi-Step Navigation
+        function changeStep(delta) {
+            if (delta === 1) {
+                // Validation before proceeding
+                if (currentStep === 1) {
+                    const checkboxes = document.querySelectorAll('input[name="service"]:checked');
+                    if (checkboxes.length === 0) {
+                        showToast('Por favor, selecione pelo menos um serviço!');
+                        return;
+                    }
+                }
+                if (currentStep === 3) {
+                    if (!selectedTime) {
+                        showToast('Por favor, selecione um horário disponível!');
+                        return;
+                    }
+                }
+                if (currentStep === 4) {
+                    submitBooking();
+                    return;
+                }
+            }
+
+            currentStep += delta;
+            if (currentStep < 1) currentStep = 1;
+            if (currentStep > 4) currentStep = 4;
+
+            updateStepView();
+        }
+
+        function updateStepView() {
+            // Hide all steps
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`step-content-${i}`).classList.add('hidden');
+                
+                const numEl = document.getElementById(`step-num-${i}`);
+                numEl.classList.remove('step-active', 'step-completed');
+                
+                if (i < currentStep) {
+                    numEl.classList.add('step-completed');
+                    numEl.innerHTML = '<i class="fa-solid fa-check text-xs"></i>';
+                } else if (i === currentStep) {
+                    numEl.classList.add('step-active');
+                    numEl.innerText = i;
+                } else {
+                    numEl.innerText = i;
+                    numEl.classList.add('text-gray-500');
+                }
+            }
+
+            // Show active step
+            document.getElementById(`step-content-${currentStep}`).classList.remove('hidden');
+
+            // Toggle prev button
+            const btnPrev = document.getElementById('btn-prev-step');
+            if (currentStep === 1) {
+                btnPrev.classList.add('hidden');
+            } else {
+                btnPrev.classList.remove('hidden');
+            }
+
+            // Next button text update
+            const btnNext = document.getElementById('btn-next-step');
+            if (currentStep === 4) {
+                btnNext.innerHTML = '<span>Finalizar</span> <i class="fa-solid fa-check"></i>';
+            } else {
+                btnNext.innerHTML = '<span>Avançar</span> <i class="fa-solid fa-arrow-right"></i>';
+            }
+        }
+
+        // Submit Booking & Generate Receipt
+        function submitBooking() {
+            const name = document.getElementById('client-name').value.trim();
+            const phone = document.getElementById('client-phone').value.trim();
+            const notes = document.getElementById('client-notes').value.trim();
+            const date = document.getElementById('booking-date').value;
+            const barberRadio = document.querySelector('input[name="barber"]:checked');
+            const barberName = barberRadio ? barberRadio.value : 'Qualquer disponível';
+
+            if (!name || !phone) {
+                showToast('Preencha seu Nome e WhatsApp!');
+                return;
+            }
+
+            // Formatted Date
+            const dateParts = date.split('-');
+            const formattedDate = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`;
+
+            // Build Receipt Summary
+            const summaryHTML = `
+                <p><strong class="text-white">Cliente:</strong> ${name}</p>
+                <p><strong class="text-white">WhatsApp:</strong> ${phone}</p>
+                <p><strong class="text-white">Serviço(s):</strong> ${selectedServices.join(', ')}</p>
+                <p><strong class="text-white">Barbeiro:</strong> ${barberName}</p>
+                <p><strong class="text-white">Data &amp; Hora:</strong> ${formattedDate} às ${selectedTime}</p>
+                <p><strong class="text-white">Total:</strong> <span class="text-gold-400 font-bold">R$ ${totalPrice.toFixed(2).replace('.', ',')}</span></p>
+                ${notes ? `<p><strong class="text-white">Obs:</strong> ${notes}</p>` : ''}
+            `;
+            document.getElementById('receipt-summary').innerHTML = summaryHTML;
+
+            // WhatsApp Message Generator
+            const msg = `Olá Barbearia Kadu! Gostaria de confirmar meu agendamento:\n\n` +
+                        `👤 *Cliente:* ${name}\n` +
+                        `✂️ *Serviço:* ${selectedServices.join(', ')}\n` +
+                        `💈 *Barbeiro:* ${barberName}\n` +
+                        `📅 *Data:* ${formattedDate} às ${selectedTime}\n` +
+                        `💰 *Valor Total:* R$ ${totalPrice.toFixed(2).replace('.', ',')}\n` +
+                        (notes ? `📝 *Obs:* ${notes}\n` : '');
+
+            const encodedMsg = encodeURIComponent(msg);
+            document.getElementById('whatsapp-redirect-btn').href = `https://wa.me/5511998876655?text=${encodedMsg}`;
+
+            closeBookingModal();
+            document.getElementById('receipt-modal').classList.remove('hidden');
+        }
+
+        function closeReceiptModal() {
+            document.getElementById('receipt-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Gallery Filter
+        function filterGallery(category) {
+            const buttons = document.querySelectorAll('#gallery-filters button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active', 'bg-gold-500', 'text-dark-900');
+                btn.classList.add('bg-dark-800', 'text-gray-300');
+            });
+            event.target.classList.add('active', 'bg-gold-500', 'text-dark-900');
+            event.target.classList.remove('bg-dark-800', 'text-gray-300');
+
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (category === 'todos' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Lightbox Functions
+        function openLightbox(src, caption) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-caption').innerText = caption;
+            document.getElementById('lightbox-modal').classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox-modal').classList.add('hidden');
+        }
+
+        // Toast Message Handler
+        function showToast(text) {
+            const toast = document.getElementById('toast-message');
+            document.getElementById('toast-text').innerText = text;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
